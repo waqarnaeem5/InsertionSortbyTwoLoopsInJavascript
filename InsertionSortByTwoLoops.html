@@ -3,17 +3,41 @@
 
     <script>
         function Render() {
-            var myName = frmMain.txtname.value;
-            insertionSort([3, 0, 2, 5, -1, 4, 1])
+            var arr = frmMain.txtname.value;
+            arr = arr.replace(/\s+/g, '').split(',');
+            //arr = arr.split(',');
+            var b = insertionSort(arr);
+            alert(b);
         }
-        
+        function insertionSort(arr) {
+
+            var t = 0, j = 0;
+            for (var a = 0; a < arr.length; a++) {
+                for (j = a + 1; j > 0; j--) {
+                    if (parseInt(arr[j - 1]) > parseInt(arr[j])) {
+                        t = arr[j];
+                        arr[j] = arr[j - 1];
+                        arr[j - 1] = t;
+                    }
+                }
+            }
+            return arr;
+        }
     </script>
 
 </head>
 <body>
     <form name="frmMain">
-        <label> Enter any five numbers by separating comma </label>
-        <input type="text" name="txtname" value="" />
+        <label> Enter any comma separated numbers </label>
+         <input type="text" name="txtname" value="" />
+        <br /><p>
+            <i>
+                Enter # with comma i.e. <br />
+                1,9, 4,0,2,-3
+                <br />
+                3,-4,34,-3,0,-2,1,9,-9
+            </i>
+        </p>
 
         <input type="submit" value="Submit" onclick="Render()" />
     </form>
