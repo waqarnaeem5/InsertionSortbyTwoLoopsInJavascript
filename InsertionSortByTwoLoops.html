@@ -3,25 +3,25 @@
 
     <script>
         function Render() {
-            var arr = frmMain.txtname.value;
-            arr = arr.replace(/\s+/g, '').split(',');
+            var UnsortedArray = frmMain.txtname.value;
+            UnsortedArray = UnsortedArray.replace(/\s+/g, '').split(',');// removing space and divided by comma
             //arr = arr.split(',');
-            var b = insertionSort(arr);
-            alert(b);
+            var SortedArray = insertionSort(UnsortedArray);
+            alert(SortedArray);
         }
-        function insertionSort(arr) {
+        function insertionSort(UnsortedArray) {
 
             var t = 0, j = 0;
-            for (var a = 0; a < arr.length; a++) {
+            for (var a = 0; a < UnsortedArray.length; a++) {
                 for (j = a + 1; j > 0; j--) {
-                    if (parseInt(arr[j - 1]) > parseInt(arr[j])) {
-                        t = arr[j];
-                        arr[j] = arr[j - 1];
-                        arr[j - 1] = t;
+                    if (parseInt(UnsortedArray[j - 1]) > parseInt(UnsortedArray[j])) {
+                        t = UnsortedArray[j];
+                        UnsortedArray[j] = UnsortedArray[j - 1];
+                        UnsortedArray[j - 1] = t;
                     }
                 }
             }
-            return arr;
+            return UnsortedArray;
         }
     </script>
 
